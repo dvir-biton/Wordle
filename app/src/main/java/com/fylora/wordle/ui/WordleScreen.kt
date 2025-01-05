@@ -37,6 +37,7 @@ import com.fylora.wordle.ui.components.Letter
 import com.fylora.wordle.ui.components.StatisticsDialog
 import com.fylora.wordle.ui.theme.Background
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
@@ -49,7 +50,7 @@ fun WordleScreen(
     var animateLetterTyping by remember { mutableStateOf(Pair(-1, -1)) }
 
     LaunchedEffect(key1 = true) {
-        viewModel.snackbar.collect { message ->
+        viewModel.snackbar.collectLatest { message ->
             snackbarHostState.showSnackbar(message)
         }
     }

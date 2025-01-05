@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -134,10 +132,9 @@ fun GuessDistributionBar(
     ) {
         Text(
             text = "$guess",
-            modifier = Modifier.width(24.dp),
+            modifier = Modifier.padding(end = 8.dp),
             color = Color.White
         )
-        Spacer(modifier = Modifier.width(8.dp))
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -149,8 +146,8 @@ fun GuessDistributionBar(
             text = "$count",
             color = Color.White,
             modifier = Modifier
-                .weight((MAX_GUESSES - count).toFloat())
-                .padding(start = 8.dp)
+                .weight(maxOf((MAX_GUESSES - count).toFloat(), 1f))
+                .padding(horizontal = 2.dp)
         )
     }
 }
